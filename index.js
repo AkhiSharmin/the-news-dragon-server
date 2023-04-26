@@ -19,6 +19,8 @@ app.get('/categories', (req, res) => {
     res.send(categories);
 })
 
+
+
 app.get('/news/:id', (req, res) => {
     const id = req.params.id;
     console.log(id)
@@ -28,12 +30,12 @@ app.get('/news/:id', (req, res) => {
 
 
 app.get('/categories/:id', (req, res) => {
-    const id = parseFloat(req.params.id);
+    const id = parseInt(req.params.id);
     if (id === 0) {
         res.send(news)
     }
     else {
-        const categoryNews = news.filter(n => parseFloat(n.category_id) === id);
+        const categoryNews = news.filter(n => parseInt(n.category_id) === id);
         res.send(categoryNews)
     }
 })
